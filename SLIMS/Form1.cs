@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,13 @@ namespace SLIMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Datacontainer.connectsource = "Data Source=Klingen-test-su-db,62468; Initial Catalog = Klingen_Test;";
+            Datacontainer.anvandarnamn = "tomha5";
+            Datacontainer.losen = "202211";
+            Datacontainer.connectionString = @Datacontainer.connectsource + "User ID=" + Datacontainer.anvandarnamn + ";Password=" + Datacontainer.losen + "";
+            Datacontainer.cnn = new SqlConnection(Datacontainer.connectionString);
+            Datacontainer.cnn.Open();
+            MessageBox.Show("Connection Open  !");
         }
     }
 }
